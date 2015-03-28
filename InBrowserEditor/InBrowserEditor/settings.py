@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost*']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware', TEMP UNTIL FIX IS FOUND
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -82,3 +82,6 @@ USE_TZ = True
 STATIC_ROOT = 'static/'
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = (STATIC_ROOT,"editor/"+STATIC_ROOT)
+
+#Sessions
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'

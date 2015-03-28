@@ -1,5 +1,6 @@
 body {
         overflow: hidden;
+        background:#092244;
 }
 
 .header {
@@ -15,7 +16,8 @@ body {
         color:black;
         font-weight:100;
         padding:8px 5px;
-        box-sizing: border-box;
+        box-sizing: border-box; 
+        color : #68b8fb;
     }
 
     .header li.css{
@@ -56,14 +58,14 @@ body {
 }
 
 ul.nav{
-  display: inline-block;
-  vertical-align: middle;
-    margin:0;
-    padding:0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 5px;
+    padding-right:5px;
     list-style: none;
     color:#68b8fb;
- /* margin-left:10px;*/
-     float: right;
+    /* margin-left:10px;*/
+    float: right;
 }
 
 ul.nav li{
@@ -72,13 +74,13 @@ ul.nav li{
     padding:7px 0px;
     width:120px;
     text-align: center;
-  border-bottom:2px solid transparent;
+    border-bottom:2px solid transparent;
 }
 ul.nav li:hover{
     color:whitesmoke;
     cursor: pointer;
     cursor: hand;
-  border-bottom:2px solid whitesmoke;
+    border-bottom:2px solid whitesmoke;
 }
 ul.nav li .fa{
   font-size:16px;

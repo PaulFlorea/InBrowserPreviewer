@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from editor.views import HomeView
+from editor.views import HomeView,preview,save
 
 from django.contrib import admin
 admin.autodiscover()
@@ -14,4 +14,6 @@ urlpatterns = patterns('',
 
 urlpatterns = patterns('',
     url(r'^(index.html)?$', HomeView.as_view()),
+    url(r'^save/$', save),
+    url(r'^preview/$', preview),
 ) 
