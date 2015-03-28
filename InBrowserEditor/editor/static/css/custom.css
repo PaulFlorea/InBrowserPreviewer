@@ -1,0 +1,99 @@
+body {
+        overflow: hidden;
+}
+
+.header {
+  margin: 0px 0px 0px 0px;
+  padding: 0;
+  list-style: 0;
+  font-size: 0;
+}
+    .header li{
+        display: inline-block;
+        width: 50%;
+        font-size:2rem;
+        color:black;
+        font-weight:100;
+        padding:8px 5px;
+        box-sizing: border-box;
+    }
+
+    .header li.css{
+        position: absolute;
+        left: 50%;
+        width: 5rem;
+    }
+
+
+#html_editor {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  bottom: 0;
+  left: 0%;
+  width: 50%;
+}
+#css_editor {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+}
+
+.ease{
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.ease:hover{
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+ul.nav{
+  display: inline-block;
+  vertical-align: middle;
+    margin:0;
+    padding:0;
+    list-style: none;
+    color:#68b8fb;
+ /* margin-left:10px;*/
+     float: right;
+}
+
+ul.nav li{
+    display: inline-block;
+    vertical-align: top;
+    padding:7px 0px;
+    width:120px;
+    text-align: center;
+  border-bottom:2px solid transparent;
+}
+ul.nav li:hover{
+    color:whitesmoke;
+    cursor: pointer;
+    cursor: hand;
+  border-bottom:2px solid whitesmoke;
+}
+ul.nav li .fa{
+  font-size:16px;
+  color:#68b8fb;
+  margin-right:7px;
+  margin-top:-2px;
+}
+ul.nav li:hover .fa{
+  color:whitesmoke;
+}
+
+footer{
+    color:#acaeb0;
+    font-size:12pt;
+    text-align: center;
+    margin-top:20px;
+    padding:20px 0px;
+}
