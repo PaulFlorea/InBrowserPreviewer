@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% autoescape on %}
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -30,19 +31,9 @@
       <li class="css">CSS</li>
     </ul>
 
-    <div id="html_editor">&lt;!DOCTYPE HTML&gt;
-&lt;html&gt;
-  &lt;head&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</div>
+    <div id="html_editor">{{html_input}}</div>
 
-    <div id="css_editor">h1{
-  color:#007092;
-  text-align:center;
-  margin:60px 0px;
-}</div>
+    <div id="css_editor">{{css_input}}</div>
 
     <script src="{% static "js/ace_config.js" %}" type="text/javascript" charset="utf-8"></script>
 
@@ -51,3 +42,4 @@
 
   </body>
 </html>
+{% endautoescape %}
