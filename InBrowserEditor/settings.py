@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -57,7 +58,6 @@ WSGI_APPLICATION = 'InBrowserEditor.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 if os.getenv('ENV') == 'PROD':
-    import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
 else:
     DATABASES = {
