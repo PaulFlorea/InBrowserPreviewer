@@ -55,3 +55,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
+
+#Heroku
+venv/
+
+#Data
+db.sqlite3
