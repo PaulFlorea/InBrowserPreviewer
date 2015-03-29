@@ -25,8 +25,8 @@ SECRET_KEY = 'lu6v=aj6z-s(f2gj6$+hv(1u^c*c7raswtnd%yi6wf$f0l5(@f'
 DEBUG = True
 TEMPLATE_DEBUG = True
 if os.getenv('ENV') == 'PROD':
-    DEBUG = True
-    TEMPLATE_DEBUG = True
+    DEBUG = False
+    TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','code-editor.herokuapp.com']
 
@@ -89,14 +89,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = 'static/'
-STATIC_URL = '/static/'
-#To find the stored template views  
-TEMPLATE_DIRS = (STATIC_ROOT,"editor/"+STATIC_ROOT)
-
-# Session engine -- set as file for simplicity's sake
-# in production would be better as Redis or Memcache 
 if os.getenv('ENV') == 'PROD':
     SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+    
+
 else:
     SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+#To find the stored template views  
+TEMPLATE_DIRS = (STATIC_URL,"editor"+STATIC_URL)
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
