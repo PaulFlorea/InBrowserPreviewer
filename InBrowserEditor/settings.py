@@ -100,5 +100,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 #To find the stored template views  
 TEMPLATE_DIRS = (STATIC_URL,"editor"+STATIC_URL)
-STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
+# STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
