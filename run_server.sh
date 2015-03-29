@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-python manage.py runserver
+#Running in insecure because can't configure prod server
+# to handle static requests
+python manage.py runserver --insecure
