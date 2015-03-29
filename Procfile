@@ -1,1 +1,1 @@
-web: python manage.py runserver $PORT --insecure
+web: python manage.py runserver $PORT

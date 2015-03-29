@@ -39,7 +39,6 @@ def handle_session(request):
 	else:
 		status = "Existing session"
 
-	print status
 	return status
 
 
@@ -88,7 +87,6 @@ class HomeView(TemplateView):
 
 		#Session handling for previous uses
 		if "Exist" in handle_session(request):
-			print "searching"
 			kwargs['html'] = request.session['html']
 			kwargs['css'] = request.session['css']
 
