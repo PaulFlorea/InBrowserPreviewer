@@ -19,7 +19,19 @@ $(document).ready(function(){
 });
 
 function preview(){
-	save_code();
+	var formData = new FormData();
+	formData.append('html_code',html_editor.getValue());
+	formData.append('css_code',css_editor.getValue());
+
+	$.ajax({
+		url: 'save/',
+		type: 'POST',
+		data: formData,
+		processData: false,
+		contentType: false,
+		success:function(data){code_uploaded(data,$object)}
+	});	
+	
 	location.href='/preview';
 }
 
