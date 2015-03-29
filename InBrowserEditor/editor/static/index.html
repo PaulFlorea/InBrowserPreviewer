@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
   
+    <!-- Font Aesome for button icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- JQuery -->
@@ -17,24 +18,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-
+    <!-- Some extra CSS; mainly for editors and headers -->
     <link rel="stylesheet" href="{% static "css/custom.css" %}">
   </head>
   <body>
 
+    <!-- Shameless rip of buttons -->
     <ul class="nav">
     <li id="save_code" class="ease"><i class="fa fa-floppy-o"></i> Save</li>
     <li id="preview" class="ease"><i class="fa fa-external-link" style="margin-top:0px"></i> Preview</li>
-  </ul>
+    </ul>
+
+    <!-- Here be headers -->
     <ul class="header">
       <li class="html">HTML</li>
       <li class="css">CSS</li>
     </ul>
 
+    <!-- Individual editors with their codes being brought
+          in from the server -->
     <div id="html_editor">{{html_input}}</div>
-
     <div id="css_editor">{{css_input}}</div>
 
+    <!-- Editors' handler -->
     <script src="{% static "js/ace_config.js" %}" type="text/javascript" charset="utf-8"></script>
 
     <!-- Ace Editor -->
