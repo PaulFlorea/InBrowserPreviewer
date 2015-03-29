@@ -57,11 +57,10 @@ WSGI_APPLICATION = 'InBrowserEditor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+DATABASES = {}
 if os.getenv('ENV') == 'PROD':
     DATABASES = {
-        'default': {
-            dj_database_url.config(),
-        }
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
