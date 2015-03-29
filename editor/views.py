@@ -30,7 +30,7 @@ def handle_session(request):
 	#Session validation	
 	if 'id' not in request.session:
 		status = "New session"
-		request.session.set_expiry(0)
+		request.session.set_expiry(60*30)
 		request.session['id'] = unique_id
 	elif request.session['id'] != unique_id:
 		status = "Invalid session, remaking"

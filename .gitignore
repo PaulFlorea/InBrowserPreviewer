@@ -59,6 +59,7 @@ target/
 
 #Heroku
 venv/
+.env
 
 #Data
 db.sqlite3

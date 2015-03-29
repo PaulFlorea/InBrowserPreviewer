@@ -56,12 +56,16 @@ WSGI_APPLICATION = 'InBrowserEditor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.getenv('ENV') == 'PROD':
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -86,4 +90,7 @@ TEMPLATE_DIRS = (STATIC_ROOT,"editor/"+STATIC_ROOT)
 
 # Session engine -- set as file for simplicity's sake
 # in production would be better as Redis or Memcache 
-SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+if os.getenv('ENV') == 'PROD':
+    SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+else:
+    SESSION_ENGINE = 'django.contrib.sessions.backends.file'
