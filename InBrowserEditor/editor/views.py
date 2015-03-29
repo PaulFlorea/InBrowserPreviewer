@@ -79,9 +79,10 @@ def preview(request):
 # The main code editing page
 class HomeView(TemplateView):
 
-	#Template is stored in static folder
+	# Template is stored in static folder
 	template_name = "index.html"
 
+	# Here is where session data gets added if available
 	def get(self, request, *args, **kwargs):
 
 		#Session handling for previous uses
@@ -92,6 +93,7 @@ class HomeView(TemplateView):
 		context = self.get_context_data(**kwargs)
 		return self.render_to_response(context)
 
+	# Updates template with data -- either session or default
 	def get_context_data(self, **kwargs):
 		"""
 		Populate the context of the template

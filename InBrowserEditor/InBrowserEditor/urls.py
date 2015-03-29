@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
+#Main site redirects
 urlpatterns = patterns('',
     url(r'^(index.html)?$', HomeView.as_view()),
     url(r'^save/$', save),
