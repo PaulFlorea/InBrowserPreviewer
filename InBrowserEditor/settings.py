@@ -28,7 +28,7 @@ if os.getenv('ENV') == 'PROD':
     DEBUG = False
     TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','code-editor.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','code-editor.herokuapp.com','*']
 
 
 # Application definition
