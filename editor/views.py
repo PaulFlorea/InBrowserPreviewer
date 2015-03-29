@@ -25,7 +25,10 @@ def_css_code = ('h1{'+
 def handle_session(request):
 	status = ""
 
-	unique_id = request.COOKIES['csrftoken'] + request.get_host()
+	unique_id = ''
+	if os.getenv('ENV') == 'PROD':
+		unique_id += request.META['HTTP_X_FORWARDED_FOR']
+	unique_id += request.META['HTTP_USER_AGENT'] 
 
 	#Session validation	
 	if 'id' not in request.session:
