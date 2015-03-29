@@ -100,7 +100,6 @@ class HomeView(TemplateView):
 		with all published entries and all the categories.
 		"""
 		context = super(HomeView, self).get_context_data(**kwargs)
-		print kwargs
 		if len(kwargs) > 0:
 			context.update(
 					{'html_input': kwargs['html'],

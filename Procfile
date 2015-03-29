@@ -1,1 +1,1 @@
-web: sh run_server.sh
+web: python manage.py runserver 80 --insecure
