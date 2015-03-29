@@ -97,9 +97,9 @@ else:
     SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'editor/static'
+STATIC_ROOT = 'static'
 #To find the stored template views  
 TEMPLATE_DIRS = (STATIC_URL,"editor"+STATIC_URL)
 
-STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'editor/static'),)
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
