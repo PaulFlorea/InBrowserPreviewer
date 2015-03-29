@@ -4,6 +4,8 @@ from editor.views import HomeView,preview,save
 from django.contrib import admin
 admin.autodiscover()
 
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'InBrowserEditor.views.home', name='home'),
@@ -13,7 +15,7 @@ urlpatterns = patterns('',
 )
 
 #Main site redirects
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     url(r'^(index.html)?$', HomeView.as_view()),
     url(r'^save/$', save),
     url(r'^preview/$', preview),

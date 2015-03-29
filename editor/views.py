@@ -1,9 +1,14 @@
 import os
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
-from django.utils import cache
-from django.http import Http404, HttpResponse, HttpResponseForbidden, HttpResponseServerError
+from django.views.decorators.cache import patch_cache_control
+from django.utils.decorators import method_decorator
+from functools import wraps
+
 from django.views.generic import TemplateView
+
+from django.http import Http404, HttpResponse, HttpResponseForbidden, HttpResponseServerError
+
 
 
 # Default code for a new session
@@ -22,6 +27,22 @@ def_css_code = ('h1{'+
 	'\n\tmargin:60px 0px;'+
 	'\n}')
 
+
+def never_ever_cache(decorated_function):
+    """Like Django @never_cache but sets more valid cache disabling headers.
+
+    @never_cache only sets Cache-Control:max-age=0 which is not
+    enough. For example, with max-axe=0 Firefox returns cached results
+    of GET calls when it is restarted.
+    """
+    @wraps(decorated_function)
+    def wrapper(*args, **kwargs):
+        response = decorated_function(*args, **kwargs)
+        patch_cache_control(
+            response, no_cache=True, no_store=True, must_revalidate=True,
+            max_age=0)
+        return response
+    return wrapper
 
 # Error handling and cookie updating helper
 def handle_session(request):
@@ -87,7 +108,12 @@ class HomeView(TemplateView):
 	# Template is stored in static folder
 	template_name = "index.html"
 
+	def dispatch(self, *args, **kwargs):
+		""" Only used for applying decorators """
+		return super(HomeView, self).dispatch(*args, **kwargs)
+
 	# Here is where session data gets added if available
+	@method_decorator(never_ever_cache)
 	def get(self, request, *args, **kwargs):
 
 		#Session handling for previous uses
@@ -101,7 +127,6 @@ class HomeView(TemplateView):
 		context = self.get_context_data(**kwargs)
 		# Prevents caching in the main page to always ensure cookie use
 		response = self.render_to_response(context)
-		cache.add_never_cache_headers(response)
 		return response
 
 	# Updates template with data -- either session or default
