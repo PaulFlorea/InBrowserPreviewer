@@ -87,8 +87,11 @@ class HomeView(TemplateView):
 
 		#Session handling for previous uses
 		if "Exist" in handle_session(request):
-			kwargs['html'] = request.session['html']
-			kwargs['css'] = request.session['css']
+			if len(request.session.items()) > 2:
+				print "Seaching"
+				print request.session.items()
+				kwargs['html'] = request.session['html']
+				kwargs['css'] = request.session['css']
 
 		context = self.get_context_data(**kwargs)
 		return self.render_to_response(context)
