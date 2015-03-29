@@ -1,6 +1,7 @@
 import os
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
+from django.utils import cache
 from django.http import Http404, HttpResponse, HttpResponseForbidden, HttpResponseServerError
 from django.views.generic import TemplateView
 
@@ -24,7 +25,7 @@ def_css_code = ('h1{'+
 
 # Error handling and cookie updating helper
 def handle_session(request):
-	status = ""
+	status = ''
 
 	unique_id = ''
 	if os.getenv('ENV') == 'PROD':
@@ -98,7 +99,10 @@ class HomeView(TemplateView):
 				kwargs['css'] = request.session['css']
 
 		context = self.get_context_data(**kwargs)
-		return self.render_to_response(context)
+		# Prevents caching in the main page to always ensure cookie use
+		response = self.render_to_response(context)
+		cache.add_never_cache_headers(response)
+		return response
 
 	# Updates template with data -- either session or default
 	def get_context_data(self, **kwargs):
@@ -107,6 +111,7 @@ class HomeView(TemplateView):
 		with all published entries and all the categories.
 		"""
 		context = super(HomeView, self).get_context_data(**kwargs)
+		# Updates session data if available
 		if len(kwargs) > 0:
 			context.update(
 					{'html_input': kwargs['html'],
